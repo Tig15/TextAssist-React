@@ -1,38 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
-
-    const[myStyle, setMyStyle] = useState({
-        color: 'black',
-        backgroundColor:'white'
-    })
-
-    const[btnText, setBtnText] = useState('Enable Dark Mode')
-
-    const toggleStyle = ()=>{
-        if(myStyle.color === 'black'){
-            setMyStyle({
-                color: 'white',
-                backgroundColor: 'black',
-                border: '2px solid white'
-            })
-            setBtnText("Enable Light Mode")
-        }
-        else{
-            setMyStyle({
-                color: 'black',
-                backgroundColor: 'white',
-                border: '2px solid black'
-            })
-            setBtnText("Enable Dark Mode")
-        }
-    }
+export default function About(props) {
+  let myStyle = {
+    backgroundColor: props.mode === "dark" ? "#28282B" : "white",
+    color: props.mode === "dark" ? "white" : "black",
+  };
 
   return (
-    <div className="container" style={myStyle} >
-        <h1 className="heading my-2" > About Us</h1>
+    <div className="container">
+      <h1
+        className="heading my-2"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
+        About Us
+      </h1>
       <div className="accordion" id="accordionExample" style={myStyle}>
-        <div className="accordion-item">
+        <div className="accordion-item my-2">
           <h2 className="accordion-header" id="headingOne">
             <button
               className="accordion-button"
@@ -43,7 +26,7 @@ export default function About() {
               aria-controls="collapseOne"
               style={myStyle}
             >
-              Accordion Item #1
+              <strong> Analyse Your Text</strong>
             </button>
           </h2>
           <div
@@ -52,19 +35,13 @@ export default function About() {
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" style={myStyle}>
+              TextAssist is used to analyse your text by different features. It
+              is simple to use and efficiently.
             </div>
           </div>
         </div>
-        <div className="accordion-item">
+        <div className="accordion-item my-3">
           <h2 className="accordion-header" id="headingTwo">
             <button
               className="accordion-button collapsed"
@@ -75,7 +52,7 @@ export default function About() {
               aria-controls="collapseTwo"
               style={myStyle}
             >
-              Accordion Item #2
+              <strong>Use For</strong>
             </button>
           </h2>
           <div
@@ -84,19 +61,14 @@ export default function About() {
             aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" style={myStyle}>
+              TextAssist is a word counter application, where you can convert
+              your words from lowercase to uppercase and vice versa. You can
+              copy your manipulated text, and download your text.
             </div>
           </div>
         </div>
-        <div className="accordion-item">
+        <div className="accordion-item my-3">
           <h2 className="accordion-header" id="headingThree">
             <button
               className="accordion-button collapsed"
@@ -107,31 +79,26 @@ export default function About() {
               aria-controls="collapseThree"
               style={myStyle}
             >
-              Accordion Item #3
+              <strong> Browser Compatibility </strong>
             </button>
           </h2>
           <div
             id="collapseThree"
-            className="accordion-collapse collapse"
+            className="accordion-collapse collapse "
             aria-labelledby="headingThree"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+            <div className="accordion-body" style={myStyle}>
+              TextAssist is a word counter with many feature is compatibile with
+              Chrome, FireFox, Safari, Opera. It suits to count character in
+              facebook,blog, email,etc.
             </div>
           </div>
         </div>
       </div>
-      <div className="container my-4">
+      {/*<div className="container my-4">
         <button className="btn btn-primary" onClick={toggleStyle}> {btnText}</button>
-      </div>
+  </div>*/}
     </div>
   );
 }
